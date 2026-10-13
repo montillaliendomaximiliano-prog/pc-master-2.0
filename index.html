@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PC MASTER: academia de mantenimiento y reparación de computadoras. Aprende informática desde cero con clases, ejemplos y evaluaciones.">
+<title>PC MASTER | Academia de Informática</title>
+
+<style>
+:root {
+  --fondo: #070b13;
+  --panel: #101a2b;
+  --panel2: #142239;
+  --azul: #168cff;
+  --azul2: #63b3ff;
+  --texto: #f4f7fb;
+  --gris: #aab8cc;
+  --borde: #263751;
+  --verde: #4ade80;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.8;
+}
+
+a {
+  color: var(--azul2);
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+}
+
+header {
+  background: rgba(7, 11, 19, .96);
+  border-bottom: 1px solid var(--borde);
+  padding: 16px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--azul);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+nav a {
+  color: var(--gris);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--azul2);
+}
+
+.contenedor {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+.hero {
+  padding: 100px 0 85px;
+  background:
+    radial-gradient(ellipse at top right, #123768 0%, transparent 48%),
+    var(--fondo);
+}
+
+.etiqueta {
+  display: inline-block;
+  border: 1px solid #24538a;
+  background: #0c1e36;
+  color: var(--azul2);
+  border-radius: 30px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size: clamp(38px, 6vw, 65px);
+  line-height: 1.15;
+  max-width: 850px;
+  margin-bottom: 25px;
+}
+
+h1 span {
+  color: var(--azul);
+}
+
+.hero p {
+  max-width: 760px;
+  color: var(--gris);
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.boton {
+  display: inline-block;
+  background: var(--azul);
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 13px 22px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.boton:hover {
+  background: #0872d4;
+  transform: translateY(-2px);
+  color: white;
+}
+
+.boton.secundario {
+  background: transparent;
+  border: 1px solid var(--borde);
+  margin-left: 8px;
+}
+
+section {
+  padding: 70px 0;
+  scroll-margin-top: 85px;
+}
+
+.titulo-seccion {
+  font-size: clamp(27px, 4vw, 38px);
+  line-height: 1.3;
+  margin-bottom: 15px;
+}
+
+.subtitulo {
+  color: var(--gris);
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.tarjeta {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 25px;
+}
+
+.tarjeta h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.tarjeta p {
+  color: var(--gris);
+}
+
+.numero {
+  color: var(--azul2);
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.progreso-contenedor {
+  background: #1c2b40;
+  height: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 16px 0;
+}
+
+#barraProgreso {
+  width: 0%;
+  height: 100%;
+  background: var(--azul);
+  transition: width .3s;
+}
+
+.modulo {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  scroll-margin-top: 90px;
+}
+
+.modulo-cabecera {
+  padding: 25px;
+  background: linear-gradient(120deg, #11223a, #101a2b);
+}
+
+.modulo-cabecera h3 {
+  font-size: 24px;
+  line-height: 1.4;
+  margin: 7px 0;
+}
+
+.modulo-cabecera p {
+  color: var(--gris);
+}
+
+.contenido-clase {
+  padding: 28px;
+}
+
+.contenido-clase h4 {
+  font-size: 19px;
+  color: var(--azul2);
+  margin: 28px 0 10px;
+}
+
+.contenido-clase h4:first-child {
+  margin-top: 0;
+}
+
+.contenido-clase p {
+  margin-bottom: 15px;
+  color: #d5deeb;
+}
+
+.contenido-clase ul,
+.contenido-clase ol {
+  padding-left: 25px;
+  margin: 10px 0 20px;
+  color: #d5deeb;
+}
+
+.contenido-clase li {
+  margin-bottom: 8px;
+}
+
+.nota {
+  border-left: 4px solid var(--azul);
+  background: #0b2038;
+  padding: 18px;
+  margin: 22px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.nota strong {
+  color: var(--azul2);
+}
+
+.pregunta {
+  border-top: 1px solid var(--borde);
+  padding-top: 20px;
+  margin-top: 25px;
+}
+
+.pregunta label {
+  display: block;
+  color: var(--gris);
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.pregunta input {
+  margin-right: 8px;
+  accent-color: var(--azul);
+}
+
+.resultado {
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+details {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  margin: 12px 0;
+  padding: 16px 20px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--azul2);
+}
+
+details p {
+  color: var(--gris);
+  margin-top: 12px;
+}
+
+#buscador {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--panel);
+  color: white;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+footer {
+  border-top: 1px solid var(--borde);
+  padding: 35px 0;
+  color: var(--gris);
+  text-align: center;
+  background: #05080e;
+}
+
+footer strong {
+  color: white;
+}
+
+@media(max-width: 600px) {
+  header {
+    padding: 14px 5%;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 65px 0;
+  }
+
+  section {
+    padding: 50px 0;
+  }
+
+  .contenido-clase {
+    padding: 20px;
+  }
+
+  .boton.secundario {
+    margin: 12px 0 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="#inicio">PC <span>MASTER</span></a>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#curso">El curso</a>
+    <a href="#clases">Clases</a>
+    <a href="#evaluacion">Evaluación</a>
+    <a href="#glosario">Glosario</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="contenedor">
+    <span class="etiqueta">ACADEMIA DE INFORMÁTICA</span>
+    <h1>Aprendé a entender, mantener y reparar <span>computadoras.</span></h1>
+    <p>
+      Bienvenido a PC MASTER, una academia educativa creada para aprender
+      informática desde cero. Estudiá los componentes de una computadora,
+      comprendé cómo funciona cada pieza, conocé las herramientas de
+      mantenimiento y aprendé a diagnosticar problemas frecuentes.
+      No necesitás conocimientos previos: cada módulo explica los conceptos,
+      incorpora ejemplos y propone actividades para comprobar lo aprendido.
+    </p>
+    <a href="#clases" class="boton">Empezar a estudiar</a>
+    <a href="#curso" class="boton secundario">Conocer el curso</a>
+  </div>
+</section>
+
+<section id="curso">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Tu formación en informática</h2>
+    <p class="subtitulo">
+      El objetivo es que construyas una base sólida de conocimientos antes
+      de pasar a las prácticas. Leé las lecciones en orden, tomá apuntes
+      y respondé las preguntas al final de cada módulo.
+    </p>
+
+    <div class="grid">
+      <article class="tarjeta">
+        <div class="numero">01 · FUNDAMENTOS</div>
+        <h3>Comprender una PC</h3>
+        <p>Aprendé qué es una computadora, cómo procesa información y qué función cumple cada componente.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="numero">02 · COMPONENTES</div>
+        <h3>Conocer el hardware</h3>
+        <p>Estudiá procesadores, memoria RAM, almacenamiento, placas madre y fuentes de alimentación.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="numero">03 · MANTENIMIENTO</div>
+        <h3>Cuidar los equipos</h3>
+        <p>Conocé la prevención, la limpieza responsable, la ventilación y los cuidados eléctricos.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="numero">04 · DIAGNÓSTICO</div>
+        <h3>Buscar soluciones</h3>
+        <p>Aprendé a organizar un diagnóstico y diferenciar problemas físicos de problemas de software.</p>
+      </article>
+    </div>
+
+    <div class="tarjeta" style="margin-top:24px">
+      <h3>Tu progreso de estudio</h3>
+      <p id="textoProgreso">Completaste 0 de 8 módulos.</p>
+      <div class="progreso-contenedor">
+        <div id="barraProgreso"></div>
+      </div>
+      <p>Marcá un módulo como estudiado cuando hayas terminado de leerlo y revisar sus preguntas.</p>
+      <button class="boton secundario" onclick="reiniciarProgreso()">Reiniciar progreso</button>
+    </div>
+  </div>
+</section>
+
+<section id="clases">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Clases y material de estudio</h2>
+    <p class="subtitulo">
+      Las siguientes lecciones contienen teoría, ejemplos y recomendaciones.
+      Podés usar el buscador para localizar conceptos dentro de los módulos.
+    </p>
+
+    <input id="buscador" type="search" placeholder="Buscar: procesador, memoria RAM, temperatura..." aria-label="Buscar en las clases">
+
+    <div id="listaModulos">
+
+      <!-- MODULO 1 -->
+      <article class="modulo" id="modulo1">
+        <div class="modulo-cabecera">
+          <div class="numero">MÓDULO 01 · NIVEL INICIAL</div>
+          <h3>Introducción a las computadoras</h3>
+          <p>Qué es una computadora, cómo trabaja y cuáles son sus partes principales.</p>
+        </div>
+
+        <div class="contenido-clase">
+          <h4>1.1 ¿Qué es una computadora?</h4>
+          <p>
+            Una computadora es un dispositivo electrónico capaz de recibir datos,
+            procesarlos siguiendo instrucciones, almacenar información y producir
+            resultados. Se utiliza para estudiar, trabajar, comunicarse, crear
+            contenido, realizar cálculos, jugar y desarrollar programas.
+          </p>
+          <p>
+            Para comprender su funcionamiento, conviene pensar en cuatro tareas:
+            entrada, procesamiento, almacenamiento y salida. Cuando escribís un
+            documento, por ejemplo, introducís información con el teclado, el
+            procesador ejecuta las instrucciones del programa, la memoria mantiene
+            temporalmente los datos necesarios y la pantalla muestra el resultado.
+            Si guardás el documento, se escribe en un dispositivo de almacenamiento.
+          </p>
+
+          <h4>1.2 Hardware y software</h4>
+          <p>
+            El <strong>hardware</strong> es el conjunto de componentes físicos que
+            podés tocar. Algunos ejemplos son el gabinete, el monitor, el teclado,
+            la placa madre, la memoria RAM y el disco de almacenamiento.
+          </p>
+          <p>
+            El <strong>software</strong> es el conjunto de programas y datos que
+            utiliza la computadora. El sistema operativo, el navegador de Internet,
+            un editor de texto y un videojuego son ejemplos de software.
+          </p>
+          <p>
+            Ambos trabajan en conjunto. El hardware proporciona los recursos
+            físicos para ejecutar las instrucciones, mientras que el software
+            indica qué tareas realizar. Un equipo con componentes potentes no
+            puede aprovecharlos correctamente si su sistema está mal configurado
+            o si el programa que necesita no funciona.
+          </p>
+
+          <div class="nota">
+            <strong>Ejemplo cotidiano:</strong> el teclado es hardware y el
+            programa donde escribís es software. Al presionar una tecla, el
+            sistema recibe la señal y el programa muestra el carácter correspondiente.
+          </div>
+
+          <h4>1.3 Partes principales de una PC</h4>
+          <ul>
+            <li><strong>Procesador (CPU):</strong> ejecuta instrucciones y realiza operaciones.</li>
+            <li><strong>Memoria RAM:</strong> mantiene temporalmente los datos y programas que están en uso.</li>
+            <li><strong>Almacenamiento:</strong> conserva el sistema operativo, los programas y los archivos.</li>
+            <li><strong>Placa madre:</strong> permite conectar y comunicar los componentes compatibles.</li>
+            <li><strong>Fuente de alimentación:</strong> convierte la energía eléctrica de la toma en las tensiones que necesita el equipo.</li>
+            <li><strong>GPU o tarjeta gráfica:</strong> procesa gráficos; puede estar integrada en el procesador o ser una tarjeta independiente.</li>
+            <li><strong>Sistema de refrigeración:</strong> ayuda a mantener temperaturas de funcionamiento adecuadas.</li>
+          </ul>
+
+          <h4>1.4 Periféricos de entrada y salida</h4>
+          <p>
+            Los periféricos permiten que una persona intercambie información
+            con la computadora. Los dispositivos de entrada envían datos:
+            teclado, mouse, micrófono y escáner. Los dispositivos de salida
+            presentan resultados: monitor, parlantes e impresora.
+          </p>
+          <p>
+            Algunos dispositivos cumplen ambas funciones. Una pantalla táctil,
+            por ejemplo, muestra imágenes y también recibe las acciones del
+            usuario. Una unidad de almacenamiento externa puede permitir leer
+            y escribir archivos.
+          </p>
+
+          <h4>1.5 ¿Qué pasa cuando encendés una computadora?</h4>
+          <p>
+            Al presionar el botón de encendido, la fuente entrega energía a los
+            componentes. El firmware de la placa madre inicia comprobaciones
+            básicas del hardware y busca un dispositivo desde el cual arrancar.
+            Si encuentra un sistema operativo válido, comienza su carga.
+          </p>
+          <p>
+            Después, el sistema operativo prepara los servicios y controladores
+            necesarios y presenta la pantalla de inicio de sesión o el escritorio.
+            Si el equipo no arranca, la causa puede estar relacionada con la
+            alimentación, la memoria, el almacenamiento, la configuración o
+            el propio sistema operativo. Por eso es importante diagnosticar
+            antes de reemplazar piezas.
+          </p>
+
+          <h4>Resumen del módulo</h4>
+          <p>
+            Una computadora combina hardware y software para recibir, procesar,
+            almacenar y mostrar información. Entender las funciones generales
+            de sus componentes es el primer paso para aprender mantenimiento
+            y reparación.
+          </p>
+
+          <div class="pregunta">
+            <strong>Actividad de repaso</strong>
+            <p>¿Cuál de estos elementos es software?</p>
+            <label><input type="radio" name="q1" value="a"> La memoria RAM</label>
+            <label><input type="radio" name="q1" value="b"> El sistema operativo</label>
+            <label><input type="radio" name="q1" value="c"> La placa madre</label>
+            <button class="boton" onclick="corregir('q1','b','r1')">Corregir respuesta</button>
+            <p class="resultado" id="r1"></p>
+          </div>
+          <button class="boton" onclick="completarModulo(1)">Marcar módulo como estudiado</button>
+        </div>
+      </article>
+
+      <!-- MODULO 2 -->
+      <article class="modulo" id="modulo2">
+        <div class="modulo-cabecera">
+          <div class="numero">MÓDULO 02 · HARDWARE</div>
+          <h3>Componentes internos de la computadora</h3>
+          <p>Conocé las piezas, sus funciones y los criterios básicos de compatibilidad.</p>
+        </div>
+
+        <div class="contenido-clase">
+          <h4>2.1 La placa madre</h4>
+          <p>
+            La placa madre, también llamada motherboard, es la tarjeta principal
+            del equipo. Contiene circuitos, conectores, ranuras y componentes
+            que permiten que el procesador, la memoria, el almacenamiento y
+            los dispositivos de expansión se comuniquen.
+          </p>
+          <p>
+            No todas las placas madre son iguales. Se diferencian por el tamaño,
+            el tipo de procesador compatible, los módulos de memoria admitidos,
+            las conexiones disponibles y las funciones incluidas. Antes de
+            comprar un componente, hay que consultar las especificaciones
+            oficiales del modelo concreto de placa madre.
+          </p>
+
+          <h4>2.2 El procesador (CPU)</h4>
+          <p>
+            La CPU ejecuta instrucciones de los programas y coordina muchas
+            operaciones del sistema. Entre sus características están la
+            arquitectura, la cantidad de núcleos, los hilos de ejecución,
+            las frecuencias de funcionamiento y la memoria caché.
+          </p>
+          <p>
+            Los núcleos permiten realizar tareas de procesamiento en paralelo
+            cuando el programa y el sistema pueden aprovecharlos. La frecuencia
+            indica ciclos por segundo, pero no determina por sí sola el
+            rendimiento: también importan la arquitectura, el consumo, las
+            temperaturas y la tarea que se está ejecutando.
+          </p>
+          <p>
+            Para elegir un procesador hay que verificar el zócalo, la compatibilidad
+            de la placa madre, el soporte del firmware, los requisitos de energía
+            y la refrigeración. No alcanza con que dos procesadores tengan
+            la misma marca para que sean compatibles entre sí.
+          </p>
+
+          <h4>2.3 La memoria RAM</h4>
+          <p>
+            La memoria RAM almacena temporalmente los datos que los programas
+            necesitan durante su ejecución. Su contenido normalmente se pierde
+            cuando la computadora se apaga. Por eso no reemplaza al almacenamiento
+            permanente, donde se guardan los archivos.
+          </p>
+          <p>
+            La cantidad de RAM influye en cuántos programas y tareas se pueden
+            mantener activos con comodidad. Si la memoria disponible se agota,
+            el sistema puede recurrir a almacenamiento como memoria virtual,
+            lo que suele ser más lento que acceder a la RAM.
+          </p>
+          <p>
+            Los módulos deben ser compatibles con la placa madre y el procesador.
+            Existen distintas generaciones y formatos de memoria, y no se deben
+            forzar módulos que no correspondan a la ranura. También conviene
+            revisar la capacidad máxima admitida y la configuración recomendada
+            por el fabricante.
+          </p>
+
+          <h4>2.4 HDD y SSD: almacenamiento</h4>
+          <p>
+            Un disco duro mecánico, conocido como HDD, utiliza platos giratorios
+            y cabezales para leer y escribir datos. Una unidad de estado sólido,
+            conocida como SSD, utiliza memoria flash y no necesita partes
+            mecánicas móviles para acceder a los datos.
+          </p>
+          <p>
+            Los SSD suelen ofrecer tiempos de inicio y carga más rápidos que
+            los HDD convencionales. Los HDD siguen siendo útiles en determinadas
+            situaciones donde se necesita mucha capacidad de almacenamiento.
+            La mejor elección depende del presupuesto, la capacidad requerida,
+            la compatibilidad y el uso del equipo.
+          </p>
+          <p>
+            Entre las conexiones habituales están SATA y las unidades SSD que
+            utilizan el formato M.2. Es importante entender que M.2 es un
+            formato físico: una unidad M.2 puede utilizar distintos protocolos,
+            por lo que hay que comprobar cuáles admite la placa madre.
+          </p>
+
+          <h4>2.5 Fuente de alimentación</h4>
+          <p>
+            La fuente de alimentación, o PSU, transforma la corriente alterna
+            de la toma en corriente continua con las tensiones necesarias para
+            los componentes. Una fuente de calidad debe ofrecer potencia
+            suficiente, protecciones adecuadas y conectores compatibles.
+          </p>
+          <p>
+            No conviene elegir una fuente solamente por el número de vatios
+            anunciado. También hay que considerar su calidad, la distribución
+            de potencia, las conexiones requeridas y las recomendaciones de
+            los fabricantes del procesador y de la tarjeta gráfica.
+          </p>
+          <div class="nota">
+            <strong>Seguridad:</strong> nunca abras una fuente de alimentación
+            para repararla. Puede conservar cargas eléctricas peligrosas incluso
+            después de desconectarla. Su diagnóstico interno corresponde a
+            personal capacitado.
+          </div>
+
+          <h4>2.6 La tarjeta gráfica (GPU)</h4>
+          <p>
+            La GPU procesa operaciones relacionadas con imágenes y gráficos.
+            Puede estar integrada en el procesador o formar parte de una tarjeta
+            dedicada. Las tarjetas dedicadas suelen incluir su propia memoria
+            de video, conocida como VRAM, y pueden necesitar conectores de
+            alimentación adicionales.
+          </p>
+          <p>
+            El rendimiento gráfico depende de diversos factores: la arquitectura,
+            la memoria disponible, la refrigeración, los controladores y el
+            programa utilizado. Una GPU potente tampoco puede compensar todos
+            los límites de los demás componentes del equipo.
+          </p>
+
+          <h4>2.7 Refrigeración y flujo de aire</h4>
+          <p>
+            Los componentes generan calor al trabajar. Los disipadores,
+            ventiladores y otros sistemas de refrigeración ayudan a transferir
+            ese calor al aire y a mantener temperaturas dentro de los límites
+            previstos por el fabricante.
+          </p>
+          <p>
+            Una mala circulación de aire, la acumulación de polvo o un ventilador
+            que no funciona pueden elevar las temperaturas y reducir el rendimiento.
+            Para analizar un problema térmico se deben observar las temperaturas,
+            las revoluciones de los ventiladores, el uso de los componentes
+            y las condiciones ambientales.
+          </p>
+
+          <h4>2.8 Compatibilidad antes de comprar</h4>
+          <ol>
+            <li>Identificá el modelo exacto de la placa madre.</li>
+            <li>Comprobá qué procesadores admite y qué versión de firmware requiere.</li>
+            <li>Verificá la generación, el formato y la capacidad de memoria compatibles.</li>
+            <li>Revisá las conexiones y los formatos de las unidades de almacenamiento.</li>
+            <li>Calculá los requisitos de energía de todos los componentes.</li>
+            <li>Comprobá el espacio del gabinete y la altura o longitud admitida.</li>
+          </ol>
+
+          <h4>Resumen del módulo</h4>
+          <p>
+            Cada pieza cumple una función distinta. Una reparación correcta
+            requiere identificar los modelos exactos, entender sus funciones
+            y verificar la compatibilidad antes de reemplazar componentes.
+          </p>
+
+          <div class="pregunta">
+            <strong>Actividad de repaso</strong>
+            <p>¿Qué componente mantiene temporalmente los datos de los programas en uso?</p>
+            <label><input type="radio" name="q2" value="a"> La memoria RAM</label>
+            <label><input type="radio" name="q2" value="b"> La fuente de alimentación</label>
+            <label><input type="radio" name="q2" value="c"> El gabinete</label>
+            <button class="boton" onclick="corregir('q2','a','r2')">Corregir respuesta</button>
+            <p class="resultado" id="r2"></p>
+          </div>
+          <button class="boton" onclick="completarModulo(2)">Marcar módulo como estudiado</button>
+        </div>
+      </article>
+
+      <!-- MODULO 3 -->
+      <article class="modulo" id="modulo3">
+        <div class="modulo-cabecera">
+          <div class="numero">MÓDULO 03 · SEGURIDAD</div>
+          <h3>Herramientas y seguridad en el mantenimiento</h3>
+          <p>Preparación del área de trabajo, electricidad estática y prevención de daños.</p>
+        </div>
+
+        <div class="contenido-clase">
+          <h4>3.1 Por qué la seguridad es lo primero</h4>
+          <p>
+            Antes de realizar cualquier mantenimiento, hay que evaluar los
+            riesgos para la persona y para el equipo. La electricidad, los
+            componentes delicados, las herramientas y las superficies de
+            trabajo pueden provocar lesiones o daños si se utilizan de forma
+            incorrecta.
+          </p>
+          <p>
+            Un técnico responsable no comienza desmontando piezas sin un plan.
+            Primero identifica el equipo, consulta la documentación disponible,
+            pregunta por los síntomas y determina qué pruebas son necesarias.
+            El objetivo es solucionar el problema sin crear otros nuevos.
+          </p>
+
+          <h4>3.2 Preparar el lugar de trabajo</h4>
+          <ul>
+            <li>Trabajá sobre una superficie firme, limpia, seca y bien iluminada.</li>
+            <li>Mantené líquidos y alimentos alejados de los componentes.</li>
+            <li>Organizá los tornillos para evitar pérdidas o mezclas.</li>
+            <li>Utilizá herramientas apropiadas y en buen estado.</li>
+            <li>Consultá los manuales de servicio y las indicaciones del fabricante.</li>
+            <li>Realizá una copia de seguridad de los datos cuando corresponda.</li>
+          </ul>
+
+          <h4>3.3 Descarga electrostática</h4>
+          <p>
+            La electricidad estática es una acumulación de carga eléctrica
+            que puede transferirse entre objetos. Aunque una descarga pequeña
+            no siempre sea perceptible, puede dañar circuitos electrónicos
+            sensibles.
+          </p>
+          <p>
+            Para reducir el riesgo, utilizá medidas antiestáticas adecuadas,
+            como una pulsera ESD correctamente conectada a un punto de tierra
+            apropiado y una superficie de trabajo diseñada para ese propósito.
+            Seguí las instrucciones del fabricante de los equipos y de los
+            elementos de protección.
+          </p>
+          <p>
+            Manipulá las placas por sus bordes y evitá tocar directamente los
+            contactos dorados o los componentes electrónicos. Guardá las
+            piezas retiradas en bolsas antiestáticas adecuadas.
+          </p>
+
+          <h4>3.4 Desconectar y verificar</h4>
+          <p>
+            Antes de abrir el gabinete, apagá el sistema, desconectá el cable
+            de alimentación y retir á los periféricos que puedan interferir.
+            Seguí el procedimiento del fabricante para asegurarte de que el
+            equipo esté desconectado de manera segura.
+          </p>
+          <p>
+            No trabajes en componentes internos mientras el equipo está
+            energizado, salvo que una prueba específica lo requiera y sea
+            realizada por personal capacitado con procedimientos adecuados.
+            No abras la fuente de alimentación ni manipules circuitos de red
+            eléctrica.
+          </p>
+
+          <h4>3.5 Herramientas habituales</h4>
+          <ul>
+            <li><strong>Destornilladores:</strong> permiten retirar tornillos del tipo y tamaño adecuados.</li>
+            <li><strong>Pulsera y superficie antiestáticas:</strong> ayudan a reducir los riesgos de descarga electrostática.</li>
+            <li><strong>Linterna:</strong> facilita observar conectores y zonas poco iluminadas.</li>
+            <li><strong>Aire de limpieza apropiado:</strong> permite retirar polvo siguiendo las precauciones del producto.</li>
+            <li><strong>Bridas reutilizables:</strong> ayudan a organizar cables sin obstruir ventiladores.</li>
+            <li><strong>Documentación:</strong> los manuales permiten conocer procedimientos y conexiones correctas.</li>
+          </ul>
+
+          <h4>3.6 Cómo documentar una reparación</h4>
+          <p>
+            Registrá el estado inicial, los síntomas, los mensajes de error,
+            las pruebas realizadas y los resultados. Anotá qué cambios hiciste
+            y qué piezas se retiraron o reemplazaron. Esta información ayuda
+            a detectar patrones, comparar resultados y explicar el trabajo
+            al propietario del equipo.
+          </p>
+          <p>
+            También es importante respetar la privacidad. No revises archivos
+            personales sin autorización y no copies información del cliente
+            a dispositivos externos sin permiso. Si es necesario acceder a
+            datos para una prueba, explicá previamente el motivo.
+          </p>
+
+          <div class="nota">
+            <strong>Regla profesional:</strong> si una tarea supera tu
+            capacitación o implica riesgos eléctricos, detené el trabajo
+            y consultá a un técnico calificado.
+          </div>
+
+          <h4>Resumen del módulo</h4>
+          <p>
+            Un buen mantenimiento empieza con la prevención, el orden y la
+            documentación. La seguridad es parte de la reparación, no un
+            detalle opcional.
+          </p>
+
+          <div class="pregunta">
+            <strong>Actividad de repaso</strong>
+            <p>¿Qué medida ayuda a proteger los componentes contra la electricidad estática?</p>
+            <label><input type="radio" name="q3" value="a"> Trabajar sobre una alfombra</label>
+            <label><input type="radio" name="q3" value="b"> Usar protección antiestática adecuada</label>
+            <label><input type="radio" name="q3" value="c"> Tocar los contactos de las placas</label>
+            <button class="boton" onclick="corregir('q3','b','r3')">Corregir respuesta</button>
+            <p class="resultado" id="r3"></p>
+          </div>
+          <button class="boton" onclick="completarModulo(3)">Marcar módulo como estudiado</button>
+        </div>
+      </article>
+
+      <!-- MODULO 4 -->
+      <article class="modulo" id="modulo4">
+        <div class="modulo-cabecera">
+          <div class="numero">MÓDULO 04 · MANTENIMIENTO</div>
+          <h3>Limpieza y mantenimiento preventivo</h3>
+          <p>Cómo cuidar una computadora y reducir problemas provocados por polvo, calor y desgaste.</p>
+        </div>
+
+        <div class="contenido-clase">
+          <h4>4.1 ¿Qué es el mantenimiento preventivo?</h4>
+          <p>
+            El mantenimiento preventivo consiste en realizar revisiones
+            periódicas para reducir la probabilidad de fallas y conservar
+            el equipo en condiciones adecuadas. No garantiza que nunca
+            aparezca un problema, pero ayuda a detectar señales de desgaste
+            antes de que provoquen una interrupción importante.
+          </p>
+          <p>
+            Incluye observar el estado físico del equipo, comprobar la
+            ventilación, revisar cables, verificar el funcionamiento de
+            ventiladores y mantener el sistema operativo actualizado cuando
+            las actualizaciones sean compatibles y apropiadas.
+          </p>
+
+          <h4>4.2 Polvo y ventilación</h4>
+          <p>
+            El polvo puede acumularse en filtros, ventiladores, disipadores
+            y rejillas. Cuando obstruye el paso del aire, dificulta la
+            transferencia de calor. El equipo puede aumentar la velocidad
+            de sus ventiladores, producir más ruido o reducir su rendimiento
+            para protegerse de temperaturas excesivas.
+          </p>
+          <p>
+            Antes de limpiar, apagá y desconectá el equipo. Utilizá métodos
+            adecuados para electrónica y seguí las recomendaciones del
+            fabricante. Si usás aire comprimido, respetá las indicaciones
+            de seguridad del producto y evitá hacer girar los ventiladores
+            a velocidades excesivas con el chorro de aire.
+          </p>
+          <p>
+            No uses una aspiradora doméstica directamente sobre las placas
+            electrónicas ni apliques líquidos de limpieza sobre componentes.
+            Si un ventilador está dañado, un cable está deteriorado o hay
+            señales de humedad o corrosión, corresponde evaluar la situación
+            antes de volver a energizar el equipo.
+          </p>
+
+          <h4>4.3 Pasta térmica</h4>
+          <p>
+            La pasta térmica mejora el contacto térmico entre superficies
+            como el procesador y su disipador, rellenando pequeñas
+            irregularidades. Con el tiempo, una instalación deficiente,
+            el desmontaje o el deterioro del material pueden afectar
+            la transferencia de calor.
+          </p>
+          <p>
+            No es necesario cambiar la pasta térmica por calendario sin
+            evaluar el estado del sistema. Si hay temperaturas anormales,
+            primero revisá la ventilación, el montaje del disipador, el
+            funcionamiento de los ventiladores y las condiciones de uso.
+            Para reemplazar la pasta, seguí el procedimiento específico
+            del fabricante y utilizá un producto apropiado.
+          </p>
+
+          <h4>4.4 Mantenimiento del software</h4>
+          <p>
+            El mantenimiento también incluye revisar el sistema operativo,
+            las actualizaciones de seguridad, el espacio libre y los
+            programas instalados. Desinstalar aplicaciones que ya no se
+            usan puede liberar espacio, pero no conviene eliminar archivos
+            del sistema sin conocer su función.
+          </p>
+          <p>
+            Las copias de seguridad son fundamentales. Una estrategia útil
+            consiste en mantener varias copias de los archivos importantes,
+            incluyendo una copia separada del equipo principal. Revisá
+            periódicamente que las copias puedan recuperarse.
+          </p>
+
+          <h4>4.5 Cómo reconocer señales de advertencia</h4>
+          <ul>
+            <li>Ventiladores con ruidos nuevos o vibraciones.</li>
+            <li>Apagados inesperados o reinicios frecuentes.</li>
+            <li>Temperaturas fuera de los rangos esperados por el fabricante.</li>
+            <li>Errores al acceder a archivos o señales de problemas de almacenamiento.</li>
+            <li>Conectores flojos, cables dañados o marcas de humedad.</li>
+            <li>Olores anormales o señales de sobrecalentamiento.</li>
+          </ul>
+          <p>
+            Ante señales de daño eléctrico, olor a quemado, líquido o
+            humo, apagá el equipo si es seguro hacerlo, desconectá la
+            alimentación sin exponerte a riesgos y no vuelvas a encenderlo
+            hasta que se haya evaluado el problema.
+          </p>
+
+          <h4>4.6 Crear un plan de mantenimiento</h4>
+          <p>
+            La frecuencia depende del ambiente, el uso y las recomendaciones
+            del fabricante. Un equipo utilizado en un ambiente con mucho polvo
+            puede necesitar revisiones más frecuentes que uno instalado en
+            un espacio limpio. Registrá la fecha, las tareas realizadas y
+            cualquier cambio observado.
+          </p>
+          <p>
+            No limpies solamente porque pasó cierto número de meses: observá
+            las condiciones reales del equipo. El objetivo es aplicar un
+            mantenimiento razonable y seguro, evitando desmontajes
+            innecesarios.
+          </p>
+
+          <h4>Resumen del módulo</h4>
+          <p>
+            La limpieza adecuada, la ventilación, las copias de seguridad y
+            la revisión periódica ayudan a prevenir problemas. Todo
+            procedimiento debe respetar las indicaciones del fabricante.
+          </p>
+
+          <div class="pregunta">
+            <strong>Actividad de repaso</strong>
+            <p>¿Cuál es el objetivo principal del mantenimiento preventivo?</p>
+            <label><input type="radio" name="q4" value="a"> Reducir riesgos de fallas y conservar el equipo</label>
+            <label><input type="radio" name="q4" value="b"> Cambiar todas las piezas todos los meses</label>
+            <label><input type="radio" name="q4" value="c"> Evitar todas las actualizaciones</label>
+            <button class="boton" onclick="corregir('q4','a','r4')">Corregir respuesta</button>
+            <p class="resultado" id="r4"></p>
+          </div>
+          <button class="boton" onclick="completarModulo(4)">Marcar módulo como estudiado</button>
+        </div>
+      </article>
+
+      <!-- MODULO 5 -->
+      <article class="modulo" id="modulo5">
+        <div class="modulo-cabecera">
+          <div class="numero">MÓDULO 05 · SOFTWARE</div>
+          <h3>Sistema operativo, Windows y controladores</h3>
+          <p>Aprendé qué hace un sistema operativo y cómo abordar sus problemas frecuentes.</p>
+        </div>
+
+        <div class="contenido-clase">
+          <h4>5.1 ¿Qué es un sistema operativo?</h4>
+          <p>
+            El sistema operativo administra los recursos de la computadora
+            y permite que los programas interactúen con el hardware. Gestiona
+            procesos, memoria, archivos, dispositivos, usuarios y permisos.
+            Windows, Linux y macOS son ejemplos de sistemas operativos.
+          </p>
+          <p>
+            Sin un sistema operativo instalado y configurado correctamente,
+            una computadora convencional no puede ofrecer el entorno habitual
+            de escritorio. El firmware se encarga de las primeras etapas
+            del arranque y el sistema operativo asume después gran parte
+            de la administración del equipo.
+          </p>
+
+          <h4>5.2 Archivos, carpetas y almacenamiento</h4>
+          <p>
+            Los archivos guardan información y las carpetas permiten
+            organizarla. El sistema de archivos determina cómo se estructuran
+            los datos en una unidad. Al instalar un sistema operativo, se
+            preparan particiones y estructuras de almacenamiento según las
+            necesidades del equipo.
+          </p>
+          <p>
+            Antes de modificar particiones, formatear una unidad o reinstalar
+            un sistema, identificá correctamente el disco y realizá una
+            copia de seguridad de los datos importantes. Algunas operaciones
+            eliminan información de manera irreversible.
+          </p>
+
+          <h4>5.3 Controladores o drivers</h4>
+          <p>
+            Un controlador es un componente de software que permite al
+            sistema operativo comunicarse con un dispositivo. Puede haber
+            controladores para gráficos, audio, red, chipset y otros
+            componentes.
+          </p>
+          <p>
+            Cuando un dispositivo funciona mal, comprobá primero su estado,
+            el mensaje de error y las actualizaciones pertinentes. Preferí
+            los controladores oficiales del fabricante de la computadora,
+            la placa madre o el dispositivo. Evitá descargar instaladores
+            desde sitios desconocidos.
+          </p>
+
+          <h4>5.4 Actualizaciones y seguridad</h4>
+          <p>
+            Las actualizaciones pueden corregir vulnerabilidades, errores
+            y problemas de compatibilidad. Antes de una actualización
+            importante, verificá el espacio disponible, la compatibilidad
+            y la existencia de una copia de seguridad de los datos.
+          </p>
+          <p>
+            La seguridad también depende de usar contraseñas adecuadas,
+            limitar permisos innecesarios, instalar software de fuentes
+            confiables y mantener copias de seguridad. Ninguna herramienta
+            de seguridad sustituye los hábitos responsables.
+          </p>
+
+          <h4>5.5 Instalar o reinstalar un sistema operativo</h4>
+          <p>
+            La instalación requiere comprobar los requisitos del sistema,
+            disponer de un medio de instalación legítimo y respaldar los
+            archivos importantes. También hay que conocer la edición y
+            licencia correspondientes y confirmar que el equipo cumple
+            los requisitos de compatibilidad.
+          </p>
+          <p>
+            Antes de comenzar, verificá qué unidad se va a modificar.
+            Si hay varios discos conectados, identificarlos correctamente
+            reduce el riesgo de borrar el disco equivocado. Después de
+            instalar, se revisan las actualizaciones, los controladores,
+            la activación y el funcionamiento de los dispositivos.
+          </p>
+
+          <h4>5.6 Programas que no responden</h4>
+          <p>
+            Un programa puede dejar de responder por falta de recursos,
+            errores internos, incompatibilidad, archivos dañados o conflictos
+            con otros procesos. Conviene anotar el mensaje exacto, determinar
+            si ocurre siempre y comprobar si hay actualizaciones disponibles.
+          </p>
+          <p>
+            Si el problema afecta a una sola aplicación, no hay que asumir
+            que todo el sistema está dañado. Probá primero las medidas
+            menos invasivas, como reiniciar la aplicación, revisar sus
+            requisitos y consultar la documentación del desarrollador.
+          </p>
+
+          <h4>Resumen del módulo</h4>
+          <p>
+            El sistema operativo administra el equipo y los controladores
+            conectan el software con los dispositivos. Las actualizaciones,
+            las copias de seguridad y las fuentes confiables son esenciales
+            para mantener un sistema estable y seguro.
+          </p>
+
+          <div class="pregunta">
+            <strong>Actividad de repaso</strong>
+            <p>¿Para qué sirve principalmente un controlador?</p>
+            <label><input type="radio" name="q5" value="a"> Para aumentar físicamente la memoria RAM</label>
+            <label><input type="radio" name="q5" value="b"> Para permitir la comunicación entre el sistema y un dispositivo</label>
+            <label><input type="radio" name="q5" value="c"> Para reemplazar la fuente</label>
+            <button class="boton" onclick="corregir('q5','b','r5')">Corregir respuesta</button>
+            <p class="resultado" id="r5"></p>
+          </div>
+          <button class="boton" onclick="completarModulo(5)">Marcar módulo como estudiado</button>
+        </div>
+      </article>
+
+      <!-- MODULO 6 -->
+      <article class="modulo" id="modulo6">
+        <div class="modulo-cabecera">
+          <div class="numero">MÓDULO 06 · DIAGNÓSTICO</div>
+          <h3>Diagnóstico de fallas y resolución de problemas</h3>
+          <p>Aprendé a investigar síntomas en lugar de cambiar piezas al azar.</p>
+        </div>
+
+        <div class="contenido-clase">
+          <h4>6.1 Qué significa diagnosticar</h4>
+          <p>
+            Diagnosticar consiste en reunir información y realizar pruebas
+            para identificar la causa probable de una falla. Un síntoma no
+            siempre señala directamente la pieza dañada. Por ejemplo, una
+            pantalla sin imagen puede deberse al monitor, al cable, a la
+            selección de entrada, a la tarjeta gráfica o a otros problemas.
+          </p>
+          <p>
+            Un buen diagnóstico empieza por describir el síntoma con precisión.
+            Preguntá cuándo aparece, qué cambios ocurrieron recientemente,
+            si el problema es constante y qué mensajes muestra el equipo.
+            Registrá los datos antes de intervenir.
+          </p>
+
+          <h4>6.2 Un método ordenado de trabajo</h4>
+          <ol>
+            <li><strong>Identificar:</strong> registrar el modelo del equipo y los síntomas.</li>
+            <li><strong>Inspeccionar:</strong> revisar conexiones externas, cables y señales visibles.</li>
+            <li><strong>Formular hipótesis:</strong> considerar causas posibles según la evidencia.</li>
+            <li><strong>Probar:</strong> realizar una prueba por vez, usando procedimientos seguros.</li>
+            <li><strong>Comparar:</strong> observar si el resultado apoya o descarta una hipótesis.</li>
+            <li><strong>Corregir:</strong> aplicar una solución apropiada cuando haya evidencia suficiente.</li>
+            <li><strong>Verificar:</strong> comprobar que el problema se resolvió y que no aparecieron otros.</li>
+            <li><strong>Documentar:</strong> anotar la causa identificada, la solución y el resultado final.</li>
+          </ol>
+
+          <h4>6.3 La computadora no enciende</h4>
+          <p>
+            Primero diferenciá entre un equipo que no recibe energía y uno
+            que recibe energía pero no completa el arranque. Observá si hay
+            indicadores, sonidos o ventiladores funcionando, sin abrir
+            componentes energizados.
+          </p>
+          <p>
+            Revisá las conexiones externas y la toma eléctrica de forma
+            segura. Si hay olor a quemado, daño visible o señales de
+            cortocircuito, no continúes probando encendidos. El diagnóstico
+            interno de la fuente y de los circuitos eléctricos requiere
+            procedimientos apropiados y personal capacitado.
+          </p>
+
+          <h4>6.4 Enciende, pero no muestra imagen</h4>
+          <p>
+            Confirmá que el monitor esté encendido, que tenga seleccionada
+            la entrada correcta y que el cable esté conectado al puerto
+            adecuado. Si el equipo cuenta con una tarjeta gráfica dedicada,
+            verificá qué salida de video se está utilizando.
+          </p>
+          <p>
+            Si las comprobaciones externas no resuelven el problema, pueden
+            existir fallas de memoria, gráficos, firmware, placa madre
+            u otros componentes. No es correcto concluir que una pieza
+            está dañada solo porque los ventiladores giran.
+          </p>
+
+          <h4>6.5 La computadora está lenta</h4>
+          <p>
+            El rendimiento puede verse afectado por programas que consumen
+            muchos recursos, falta de memoria disponible, almacenamiento
+            con problemas, temperaturas elevadas o software no deseado.
+            Identificá cuándo ocurre la lentitud y qué procesos consumen
+            CPU, memoria o disco.
+          </p>
+          <p>
+            Antes de comprar piezas, revisá el uso real del sistema, el
+            espacio disponible y el estado de las unidades. Si sospechás
+            de un fallo físico del almacenamiento, priorizá la protección
+            de los datos y evitá pruebas innecesarias que puedan empeorar
+            la situación.
+          </p>
+
+          <h4>6.6 Reinicios y apagados inesperados</h4>
+          <p>
+            Los reinicios pueden estar relacionados con temperaturas,
+            alimentación, memoria, controladores o errores del sistema.
+            Registrá si ocurren al jugar, al iniciar una aplicación o
+            incluso cuando el equipo está sin uso.
+          </p>
+          <p>
+            Los registros del sistema y las herramientas de diagnóstico
+            pueden aportar información. Una prueba aislada no siempre
+            identifica la causa, por lo que es importante combinar
+            resultados y reproducir el problema de forma controlada.
+          </p>
+
+          <h4>6.7 Cómo evitar diagnósticos incorrectos</h4>
+          <ul>
+            <li>No cambies varios componentes al mismo tiempo sin una razón clara.</li>
+            <li>No confundas una coincidencia con una causa demostrada.</li>
+            <li>No ignores los mensajes de error: anotá el texto exacto.</li>
+            <li>No reinstales el sistema operativo como primera solución a todo problema.</li>
+            <li>No realices pruebas que pongan en riesgo a la persona o los datos.</li>
+          </ul>
+
+          <h4>Resumen del módulo</h4>
+          <p>
+            El diagnóstico profesional es un proceso ordenado basado en
+            observaciones, hipótesis y pruebas. La paciencia y el registro
+            de resultados suelen ser más útiles que cambiar piezas al azar.
+          </p>
+
+          <div class="pregunta">
+            <strong>Actividad de repaso</strong>
+            <p>Si un monitor no muestra imagen, ¿qué conviene hacer primero?</p>
+            <label><input type="radio" name="q6" value="a"> Comprar otra placa madre inmediatamente</label>
+            <label><input type="radio" name="q6" value="b"> Revisar el monitor, la entrada seleccionada y las conexiones</label>
+            <label><input type="radio" name="q6" value="c"> Formatear todos los discos</label>
+            <button class="boton" onclick="corregir('q6','b','r6')">Corregir respuesta</button>
+            <p class="resultado" id="r6"></p>
+          </div>
+          <button class="boton" onclick="completarModulo(6)">Marcar módulo como estudiado</button>
+        </div>
+      </article>
+
+      <!-- MODULO 7 -->
+      <article class="modulo" id="modulo7">
+        <div class="modulo-cabecera">
+          <div class="numero">MÓDULO 07 · ARMADO</div>
+          <h3>Cómo planificar y armar una computadora</h3>
+          <p>Compatibilidad, elección de componentes y comprobaciones antes del primer encendido.</p>
+        </div>
+
+        <div class="contenido-clase">
+          <h4>7.1 Definir el objetivo del equipo</h4>
+          <p>
+            Antes de elegir componentes, determiná para qué se utilizará
+            la computadora. Un equipo para navegar, estudiar y realizar
+            tareas de oficina tiene necesidades diferentes de uno destinado
+            a edición de video, diseño 3D o videojuegos exigentes.
+          </p>
+          <p>
+            También hay que establecer un presupuesto que contemple el
+            monitor, los periféricos, el almacenamiento y otros elementos
+            necesarios. Gastar todo el presupuesto en una sola pieza puede
+            dejar al sistema desequilibrado o incompleto.
+          </p>
+
+          <h4>7.2 Planificar la compatibilidad</h4>
+          <p>
+            La compatibilidad debe comprobarse antes de comprar. Revisá
+            el zócalo del procesador, la lista de procesadores admitidos,
+            el tipo de memoria, el formato de la placa madre, las unidades
+            compatibles y el espacio disponible para la tarjeta gráfica
+            y el sistema de refrigeración.
+          </p>
+          <p>
+            Consultar la página oficial del fabricante permite conocer
+            las especificaciones y las limitaciones del modelo concreto.
+            No supongas que dos productos son compatibles únicamente
+            porque tienen una apariencia similar.
+          </p>
+
+          <h4>7.3 Gabinete y ventilación</h4>
+          <p>
+            El gabinete debe admitir el formato de la placa madre, la
+            longitud de la tarjeta gráfica, la altura del disipador y
+            las dimensiones de la fuente. También conviene comprobar
+            la ubicación de los filtros, las entradas de aire y los
+            espacios para ventiladores.
+          </p>
+          <p>
+            Los cables deben quedar organizados de forma que no interfieran
+            con los ventiladores. Un montaje prolijo facilita el mantenimiento
+            futuro y ayuda a identificar conexiones cuando sea necesario
+            revisar el equipo.
+          </p>
+
+          <h4>7.4 Preparación del armado</h4>
+          <p>
+            Antes de comenzar, reuní las herramientas adecuadas, consultá
+            los manuales y prepará un espacio seguro. Comprobá que todos
+            los componentes correspondan a la configuración elegida y
+            que no haya daños visibles.
+          </p>
+          <p>
+            Seguí las instrucciones específicas de cada fabricante. Los
+            conectores tienen formas y mecanismos de retención particulares;
+            no los fuerces. Si una pieza no encaja, detenete y verificá
+            su orientación y compatibilidad.
+          </p>
+
+          <h4>7.5 Comprobaciones antes del primer encendido</h4>
+          <ul>
+            <li>Confirmar que el procesador y su sistema de refrigeración estén instalados según las instrucciones.</li>
+            <li>Verificar que la memoria esté colocada en las ranuras recomendadas.</li>
+            <li>Comprobar las conexiones de alimentación de la placa madre y del procesador.</li>
+            <li>Verificar las conexiones de la tarjeta gráfica cuando corresponda.</li>
+            <li>Revisar que no queden tornillos sueltos ni herramientas dentro del gabinete.</li>
+            <li>Comprobar que los ventiladores estén conectados correctamente.</li>
+            <li>Revisar las conexiones del monitor y los periféricos.</li>
+          </ul>
+
+          <h4>7.6 Primer arranque</h4>
+          <p>
+            El primer arranque permite comprobar si el sistema reconoce
+            los componentes y puede iniciar su firmware. En algunas
+            plataformas, la primera inicialización de la memoria puede
+            tardar más de lo habitual. Consultá el manual antes de
+            interpretar cualquier indicador de diagnóstico.
+          </p>
+          <p>
+            Si aparece la pantalla de configuración del firmware, revisá
+            que la CPU, la memoria y las unidades conectadas se detecten
+            correctamente. Después se configura el dispositivo de arranque
+            y se instala un sistema operativo compatible.
+          </p>
+
+          <h4>7.7 Pruebas posteriores al armado</h4>
+          <p>
+            Después de instalar el sistema, verificá las temperaturas,
+            los ventiladores, la estabilidad y el funcionamiento de los
+            puertos y periféricos. Instalá controladores apropiados y
+            ejecutá pruebas razonables para el uso previsto.
+          </p>
+          <p>
+            Si aparecen errores, volvé a un diagnóstico ordenado. Documentá
+            la configuración, los resultados y cualquier cambio realizado.
+            Un equipo terminado debe funcionar de manera estable, segura
+            y acorde con las necesidades para las que fue diseñado.
+          </p>
+
+          <h4>Resumen del módulo</h4>
+          <p>
+            Armar una PC requiere planificación, compatibilidad, seguridad
+            y pruebas. El éxito no depende solo de colocar las piezas:
+            también importa verificar el funcionamiento del conjunto.
+          </p>
+
+          <div class="pregunta">
+            <strong>Actividad de repaso</strong>
+            <p>¿Qué conviene verificar antes de comprar un procesador?</p>
+            <label><input type="radio" name="q7" value="a"> Solamente el color del gabinete</label>
+            <label><input type="radio" name="q7" value="b"> La compatibilidad con la placa madre y sus requisitos</label>
+            <label><input type="radio" name="q7" value="c"> Únicamente la cantidad de ventiladores</label>
+            <button class="boton" onclick="corregir('q7','b','r7')">Corregir respuesta</button>
+            <p class="resultado" id="r7"></p>
+          </div>
+          <button class="boton" onclick="completarModulo(7)">Marcar módulo como estudiado</button>
+        </div>
+      </article>
+
+      <!-- MODULO 8 -->
+      <article class="modulo" id="modulo8">
+        <div class="modulo-cabecera">
+          <div class="numero">MÓDULO 08 · PRÁCTICA PROFESIONAL</div>
+          <h3>Casos prácticos, evaluaciones y trabajo técnico</h3>
+          <p>Aplicá lo aprendido a situaciones habituales y aprendé a explicar tus conclusiones.</p>
+        </div>
+
+        <div class="contenido-clase">
+          <h4>8.1 Caso práctico: computadora lenta</h4>
+          <p>
+            Un usuario informa que su computadora tarda mucho en abrir
+            programas. Antes de sugerir una compra, registrá cuándo comenzó
+            el problema y si afecta a todas las aplicaciones o solamente
+            a una. Preguntá si hubo actualizaciones, instalaciones o
+            cambios recientes.
+          </p>
+          <p>
+            Luego, observá el uso de CPU, memoria y almacenamiento con
+            las herramientas del sistema operativo. Revisá el espacio
+            disponible, el comportamiento de las temperaturas y los
+            mensajes de error. Si aparecen indicios de fallo en la unidad,
+            protegé los datos antes de ejecutar pruebas que puedan
+            exigir mucho al dispositivo.
+          </p>
+          <p>
+            La conclusión debe basarse en los resultados. Una computadora
+            lenta no necesita automáticamente más RAM ni un procesador
+            nuevo. La causa puede ser una aplicación, una configuración,
+            una unidad con problemas o una combinación de factores.
+          </p>
+
+          <h4>8.2 Caso práctico: el equipo se apaga durante un juego</h4>
+          <p>
+            Registrá si el apagado sucede después de unos minutos, durante
+            tareas exigentes o también cuando el equipo está sin uso.
+            Comprobá las temperaturas observadas, la ventilación, los
+            registros del sistema y los requisitos de alimentación.
+          </p>
+          <p>
+            No ignores señales de sobrecalentamiento ni olores extraños.
+            Si hay indicios de un problema eléctrico, dejá de utilizar
+            el equipo hasta que se evalúe. Las pruebas deben hacerse
+            con precaución y siguiendo procedimientos apropiados.
+          </p>
+
+          <h4>8.3 Caso práctico: no hay conexión a Internet</h4>
+          <p>
+            Primero distinguí si falla una sola aplicación, la conexión
+            de esa computadora o toda la red. Revisá el estado del
+            adaptador de red, la conexión física o inalámbrica y si
+            otros dispositivos pueden conectarse.
+          </p>
+          <p>
+            Si otros dispositivos tampoco tienen conexión, el problema
+            puede estar en el router o en el proveedor. Si solo falla
+            una computadora, revisá su configuración de red y los
+            controladores correspondientes. Registrá los resultados
+            antes de modificar ajustes.
+          </p>
+
+          <h4>8.4 Cómo atender a un cliente</h4>
+          <p>
+            Un buen técnico explica el problema en términos comprensibles,
+            comunica los costos antes de realizar trabajos adicionales
+            y solicita autorización para las intervenciones necesarias.
+            No debe prometer una solución antes de conocer la causa.
+          </p>
+          <p>
+            También debe proteger los datos, respetar la privacidad,
+            conservar las piezas retiradas cuando corresponda y explicar
+            qué pruebas se realizaron. Una reparación profesional combina
+            conocimientos técnicos con honestidad, organización y
+            comunicación clara.
+          </p>
+
+          <h4>8.5 Cómo seguir aprendiendo</h4>
+          <p>
+            La informática cambia constantemente. Para seguir aprendiendo,
+            estudiá documentación oficial, consultá manuales de servicio,
+            practicá en equipos de prueba y registrá lo que descubrís.
+            Compará información de distintas fuentes confiables y
+            desconfiá de los procedimientos que no explican sus riesgos.
+          </p>
+          <p>
+            No es necesario dominar todo de inmediato. Primero consolidá
+            los fundamentos, luego practicá diagnósticos sencillos y
+            avanzá a tareas más complejas cuando comprendas los
+            procedimientos y las medidas de seguridad.
+          </p>
+
+          <h4>Actividad final</h4>
+          <p>
+            Elegí una computadora que puedas estudiar con autorización.
+            Registrá sus componentes conocidos, el sistema operativo,
+            los síntomas que presente y las pruebas que sean seguras.
+            Prepará un informe con observaciones, hipótesis, resultados
+            y recomendaciones.
+          </p>
+          <p>
+            No desmontes componentes ni modifiques configuraciones
+            importantes sin permiso. El objetivo de esta actividad es
+            aprender a investigar y documentar, no correr riesgos
+            innecesarios.
+          </p>
+
+          <div class="nota">
+            <strong>Meta de aprendizaje:</strong> al terminar los ocho
+            módulos deberías poder explicar los conceptos fundamentales,
+            reconocer componentes, identificar riesgos y organizar un
+            diagnóstico inicial. La reparación avanzada requiere más
+            práctica supervisada y formación específica.
+          </div>
+
+          <div class="pregunta">
+            <strong>Actividad de repaso</strong>
+            <p>¿Qué debe hacer un técnico antes de recomendar una reparación?</p>
+            <label><input type="radio" name="q8" value="a"> Cambiar todas las piezas que parezcan antiguas</label>
+            <label><input type="radio" name="q8" value="b"> Diagnosticar, registrar evidencias y explicar la solución propuesta</label>
+            <label><input type="radio" name="q8" value="c"> Formatear el equipo sin consultar al usuario</label>
+            <button class="boton" onclick="corregir('q8','b','r8')">Corregir respuesta</button>
+            <p class="resultado" id="r8"></p>
+          </div>
+          <button class="boton" onclick="completarModulo(8)">Marcar módulo como estudiado</button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="evaluacion">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Evaluación final</h2>
+    <p class="subtitulo">
+      Respondé las ocho preguntas. Al terminar, vas a ver cuántas respuestas
+      correctas obtuviste. Podés volver a estudiar los módulos cuando quieras.
+    </p>
+
+    <div class="tarjeta">
+      <div class="pregunta" style="border-top:0;margin-top:0">
+        <p><strong>1. ¿Qué es el hardware?</strong></p>
+        <label><input type="radio" name="f1" value="a"> Los componentes físicos</label>
+        <label><input type="radio" name="f1" value="b"> Los programas</label>
+      </div>
+
+      <div class="pregunta">
+        <p><strong>2. ¿Qué hace principalmente la CPU?</strong></p>
+        <label><input type="radio" name="f2" value="a"> Almacena archivos de forma permanente</label>
+        <label><input type="radio" name="f2" value="b"> Ejecuta instrucciones y realiza operaciones</label>
+      </div>
+
+      <div class="pregunta">
+        <p><strong>3. ¿Qué sucede normalmente con los datos de la RAM al apagar el equipo?</strong></p>
+        <label><input type="radio" name="f3" value="a"> Se conservan permanentemente</label>
+        <label><input type="radio" name="f3" value="b"> Se pierden al dejar de recibir energía</label>
+      </div>
+
+      <div class="pregunta">
+        <p><strong>4. ¿Qué ayuda a reducir el riesgo de descargas electrostáticas?</strong></p>
+        <label><input type="radio" name="f4" value="a"> Usar protección antiestática apropiada</label>
+        <label><input type="radio" name="f4" value="b"> Trabajar sobre cualquier alfombra</label>
+      </div>
+
+      <div class="pregunta">
+        <p><strong>5. ¿Qué conviene hacer antes de modificar particiones?</strong></p>
+        <label><input type="radio" name="f5" value="a"> Borrar todos los archivos sin revisarlos</label>
+        <label><input type="radio" name="f5" value="b"> Identificar la unidad y proteger los datos importantes</label>
+      </div>
+
+      <div class="pregunta">
+        <p><strong>6. ¿Qué caracteriza a un buen diagnóstico?</strong></p>
+        <label><input type="radio" name="f6" value="a"> Cambiar piezas sin realizar pruebas</label>
+        <label><input type="radio" name="f6" value="b"> Investigar síntomas y comprobar hipótesis</label>
+      </div>
+
+      <div class="pregunta">
+        <p><strong>7. ¿Qué se debe verificar antes de comprar componentes?</strong></p>
+        <label><input type="radio" name="f7" value="a"> La compatibilidad y los requisitos técnicos</label>
+        <label><input type="radio" name="f7" value="b"> Solamente la apariencia</label>
+      </div>
+
+      <div class="pregunta">
+        <p><strong>8. ¿Qué debe hacer un técnico con los datos personales del cliente?</strong></p>
+        <label><input type="radio" name="f8" value="a"> Copiarlos sin avisar</label>
+        <label><input type="radio" name="f8" value="b"> Respetar la privacidad y pedir autorización cuando corresponda</label>
+      </div>
+
+      <button class="boton" onclick="evaluacionFinal()">Corregir evaluación</button>
+      <p class="resultado" id="resultadoFinal" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section id="glosario">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Glosario técnico</h2>
+    <p class="subtitulo">Conceptos importantes para repasar durante el curso.</p>
+
+    <input id="buscadorGlosario" type="search" placeholder="Buscar un término..." aria-label="Buscar término en el glosario">
+
+    <div id="terminosGlosario">
+      <details><summary>BIOS / UEFI</summary><p>Firmware de la placa madre que inicializa el hardware y participa en el proceso de arranque.</p></details>
+      <details><summary>CPU</summary><p>Unidad central de procesamiento que ejecuta instrucciones y realiza operaciones.</p></details>
+      <details><summary>GPU</summary><p>Procesador especializado en tareas gráficas y otras operaciones paralelas.</p></details>
+      <details><summary>RAM</summary><p>Memoria de acceso rápido utilizada temporalmente por los programas en ejecución.</p></details>
+      <details><summary>SSD</summary><p>Unidad de estado sólido que almacena datos mediante memoria flash.</p></details>
+      <details><summary>HDD</summary><p>Unidad de almacenamiento que utiliza platos magnéticos y componentes mecánicos.</p></details>
+      <details><summary>Motherboard</summary><p>Placa principal que conecta y permite la comunicación entre componentes.
